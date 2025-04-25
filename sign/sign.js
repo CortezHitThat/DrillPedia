@@ -18,7 +18,7 @@ const signs = [
     id: "sign-pbc",
     title: "Paybacc Crip",
     date: "2025-04-25",
-    image: [
+    images: [
       "images/sign-pbc.jpg",
       ],
     snippet: "Hand sign yang berasal dari...",
