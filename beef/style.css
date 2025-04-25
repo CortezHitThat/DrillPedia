@@ -1,0 +1,149 @@
+/* --- General --- */
+body {
+  margin: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 700;
+  background-color: #1b0b2e;
+  color: #fff;
+}
+
+header {
+  background-color: #4b0082;
+  padding: 1rem;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #4b0082;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+/* --- News List Layout --- */
+.news-list {
+  max-width: 600px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+.news-card {
+  display: flex;
+  background-color: #2c2f33;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+  text-decoration: none;
+  color: white;
+  height: 120px;
+  max-width: 100%;
+}
+
+.news-card:hover {
+  transform: scale(1.02);
+}
+
+/* Gambar 1:1 */
+.thumbnail {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}
+
+/* Konten artikel */
+.news-content {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.news-content h3 {
+  margin: 0 0 5px;
+  font-size: 1rem;
+  line-height: 1.2em;
+}
+
+.news-content small {
+  font-size: 0.75rem;
+  color: #bbb;
+}
+
+.news-content p {
+  margin: 5px 0 0;
+  font-size: 0.75rem;
+  color: #ddd;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.read-more {
+  margin-top: 6px;
+  font-size: 0.75rem;
+  color: #bb86fc;
+  text-decoration: underline;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto 1rem;
+  padding: 0 1rem;
+}
+
+#search-input {
+  font-family: 'Source Sans Pro', sans-serif;
+  width: 100%;
+  max-width: 500px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 2px solid #4b0082;
+  font-size: 1rem;
+  background-color: #2a003f;
+  color: #fff;
+  transition: 0.3s ease;
+  box-shadow: 0 0 8px rgba(138, 43, 226, 0.3);
+}
+
+#search-input::placeholder {
+  color: #aaa;
+}
+
+#search-input:focus {
+  outline: none;
+  border-color: #bb86fc;
+  box-shadow: 0 0 10px rgba(187, 134, 252, 0.4);
+}
+
+/* --- Detail Artikel (article.html) --- */
+main#content {
+  max-width: 650px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.full-image {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+#isi {
+  line-height: 1.6em;
+  white-space: pre-line;
+}

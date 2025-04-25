@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detail Block</title>
+  <link rel="stylesheet" href="style.css" />
+  <link
+  href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap"
+  rel="stylesheet">
+  <script src="blocks.js" defer></script>
+  <script defer>
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+      const article = blocks.find(a => a.id === id);
+
+      if (article) {
+        document.getElementById("judul").innerText = article.title;
+        document.getElementById("tanggal").innerText = article.date;
+        document.getElementById("gambar").src = article.image;
+        document.getElementById("isi").innerText = article.full;
+      } else {
+        document.getElementById("content").innerHTML = "<p>Block tidak ditemukan.</p>";
+      }
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <h1 id="judul"></h1>
+    <small id="tanggal"></small>
+  </header>
+  <main id="content">
+    <img id="gambar" class="full-image"/>
+    <p id="isi"></p>
+  </main>
+  <footer>
+    <a href="blocks.html">Kembali ke Blocks</a>
+  </footer>
+</body>
+</html>

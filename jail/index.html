@@ -1,0 +1,63 @@
+<!-- NYC Drill Jail -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NYC Drill Jail Records</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
+  <script src="jail.js" defer></script>
+  <script defer>
+    document.addEventListener("DOMContentLoaded", () => {
+      const list = document.getElementById("jail-list");
+      const input = document.getElementById("search-input");
+
+      function render(data) {
+        list.innerHTML = "";
+        if (data.length === 0) {
+          list.innerHTML = "<p>Data tidak ditemukan.</p>";
+          return;
+        }
+
+        data.forEach(item => {
+          const card = document.createElement("div");
+          card.className = "news-card";
+          card.innerHTML = `
+            <img src="${item.image}" alt="${item.title}" class="thumbnail"/>
+            <div class="news-content">
+              <h3>${item.title}</h3>
+              <small>${item.date}</small>
+              <p>${item.snippet}</p>
+              <a href="jail.html?id=${item.id}" class="read-more">Baca Selengkapnya</a>
+            </div>
+          `;
+          list.appendChild(card);
+        });
+      }
+
+      render(jail);
+
+      input.addEventListener("input", () => {
+        const keyword = input.value.toLowerCase();
+        const filtered = jail.filter(item => item.title.toLowerCase().includes(keyword));
+        render(filtered);
+      });
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <h1>NYC Drill Jail Records</h1>
+  </header>
+  <main>
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Cari nama tahanan...">
+    </div>
+    <div id="jail-list" class="news-list"></div>
+  </main>
+  <footer>
+    <p>&copy; 2025 T5BS Wiki</p>
+  </footer>
+</body>
+</html>

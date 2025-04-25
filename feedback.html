@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kirim Saran atau Request</title>
+  <link rel="stylesheet" href="css/feedback.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Kirim Saran atau Request</h1>
+  </header>
+
+  <main class="form-container">
+    <form id="feedbackForm">
+      <label for="kategori">Kategori:</label>
+      <select id="kategori" name="kategori" required>
+        <option value="">Pilih salah satu</option>
+        <option value="saran">Saran</option>
+        <option value="request">Request</option>
+      </select>
+
+      <label for="pesan">Pesan Kamu:</label>
+      <textarea id="pesan" name="pesan" rows="6" placeholder="Tulis saran atau request kamu..." required></textarea>
+
+      <button type="submit">Kirim</button>
+    </form>
+
+    <p id="status"></p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 The 5 Borough Side | Cortez</p>
+  </footer>
+
+  <script src="js/feedback.js"></script>
+</body>
+</html>

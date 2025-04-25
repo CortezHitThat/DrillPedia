@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 700;
+  background-color: #1e002b;
+  color: #ffffff;
+}
+
+header {
+  background-color: #32004d;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #ffffff;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #32004d;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+.form-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #22003a;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(187, 134, 252, 0.2);
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: #bb86fc;
+}
+
+select,
+textarea {
+  font-family: 'Source Sans Pro', sans-serif;
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid #4b0082;
+  font-size: 1rem;
+  background-color: #2a0044;
+  color: #fff;
+  resize: none;
+  outline: none;
+}
+
+textarea::placeholder {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #aaa;
+}
+
+button {
+  font-family: 'Source Sans Pro', sans-serif;
+  margin-top: 1.5rem;
+  padding: 0.7rem 1.4rem;
+  background-color: #62008c;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #7e00b2;
+  transform: scale(1.03);
+}
+
+#status {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #bb86fc;
+}
