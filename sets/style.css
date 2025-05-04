@@ -147,3 +147,47 @@ main#content {
   line-height: 1.6em;
   white-space: pre-line;
 }
+
+.slider {
+  position: relative;
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.slider-container img {
+  display: none;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.slider-container img.active {
+  display: block;
+}
+
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+#prev-btn {
+  left: 0;
+}
+
+#next-btn {
+  right: 0;
+}

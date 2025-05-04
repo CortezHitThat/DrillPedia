@@ -7,20 +7,52 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
   <script src="alliances.js" defer></script>
+  <script src="slideshow.js" defer></script>
   <script defer>
     document.addEventListener("DOMContentLoaded", () => {
       const params = new URLSearchParams(window.location.search);
       const id = params.get("id");
-      const article = alliances.find(a => a.id === id);
 
-      if (article) {
-        document.getElementById("judul").innerText = article.title;
-        document.getElementById("tanggal").innerText = article.date;
-        document.getElementById("gambar").src = article.image;
-        document.getElementById("isi").innerText = article.full;
-      } else {
-        document.getElementById("content").innerHTML = "<p>Aliansi tidak ditemukan.</p>";
+      const alliance = alliances.find(item => item.id === id);
+      const judul = document.getElementById("judul");
+      const tanggal = document.getElementById("tanggal");
+      const isi = document.getElementById("isi");
+      const slider = document.getElementById("slider");
+
+      if (!alliance) {
+        judul.textContent = "Data tidak ditemukan";
+        isi.textContent = "Aliansi yang dimaksud tidak ada.";
+        return;
       }
+
+      judul.textContent = alliance.title;
+      tanggal.textContent = alliance.date;
+      isi.textContent = alliance.full;
+
+      // Atur gambar ke dalam slideshow
+      const images = Array.isArray(alliance.image) ? alliance.image : [alliance.image];
+
+      let current = 0;
+
+      const updateSlider = () => {
+        slider.style.backgroundImage = `url('${images[current]}')`;
+        slider.style.backgroundSize = "cover";
+        slider.style.backgroundPosition = "center";
+        slider.style.height = "250px";
+        slider.style.borderRadius = "10px";
+      };
+
+      window.nextImage = () => {
+        current = (current + 1) % images.length;
+        updateSlider();
+      };
+
+      window.prevImage = () => {
+        current = (current - 1 + images.length) % images.length;
+        updateSlider();
+      };
+
+      updateSlider();
     });
   </script>
 </head>
@@ -30,7 +62,12 @@
     <small id="tanggal"></small>
   </header>
   <main id="content">
-    <img id="gambar" class="full-image"/>
+    <div class="slider-container" id="slider">
+      <div class="slider-nav">
+        <button class="slider-btn" onclick="prevImage()">‹</button>
+        <button class="slider-btn" onclick="nextImage()">›</button>
+      </div>
+    </div>
     <p id="isi"></p>
   </main>
   <footer>

@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Detail Set</title>
   <link rel="stylesheet" href="style.css" />
-  <link
-  href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap"
-  rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
   <script src="sets.js" defer></script>
   <script defer>
     document.addEventListener("DOMContentLoaded", () => {
@@ -18,8 +16,38 @@
       if (article) {
         document.getElementById("judul").innerText = article.title;
         document.getElementById("tanggal").innerText = article.date;
-        document.getElementById("gambar").src = article.image;
         document.getElementById("isi").innerText = article.full;
+
+        const container = document.querySelector(".slider-container");
+        container.innerHTML = "";
+
+        article.image.forEach((src, index) => {
+          const img = document.createElement("img");
+          img.src = src;
+          img.alt = article.title;
+          img.className = index === 0 ? "active" : "";
+          container.appendChild(img);
+        });
+
+        let currentIndex = 0;
+
+        function showImage(index) {
+          const allImgs = document.querySelectorAll('.slider-container img');
+          allImgs.forEach((img, i) => {
+            img.classList.toggle('active', i === index);
+          });
+        }
+
+        document.getElementById("prev-btn").addEventListener("click", () => {
+          currentIndex = (currentIndex - 1 + article.image.length) % article.image.length;
+          showImage(currentIndex);
+        });
+
+        document.getElementById("next-btn").addEventListener("click", () => {
+          currentIndex = (currentIndex + 1) % article.image.length;
+          showImage(currentIndex);
+        });
+
       } else {
         document.getElementById("content").innerHTML = "<p>Set tidak ditemukan.</p>";
       }
@@ -31,12 +59,18 @@
     <h1 id="judul"></h1>
     <small id="tanggal"></small>
   </header>
+
   <main id="content">
-    <img id="gambar" class="full-image"/>
+    <div class="slider">
+      <button id="prev-btn" class="slide-btn">‹</button>
+      <div class="slider-container"></div>
+      <button id="next-btn" class="slide-btn">›</button>
+    </div>
     <p id="isi"></p>
   </main>
+
   <footer>
-    <a href="sets.html">Kembali ke Sets</a>
+    <a href="index.html">Kembali ke Sets</a>
   </footer>
 </body>
 </html>

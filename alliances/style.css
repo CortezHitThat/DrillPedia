@@ -147,3 +147,36 @@ main#content {
   line-height: 1.6em;
   white-space: pre-line;
 }
+
+.slider-container {
+  position: relative;
+  max-width: 100%;
+  margin-bottom: 1rem;
+}
+
+.slider-container img {
+  display: none;
+}
+
+.slider-container img.active {
+  display: block;
+}
+
+.slider-nav {
+  position: absolute;
+  top: 45%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.slider-btn {
+  background-color: rgba(0,0,0,0.6);
+  color: white;
+  border: none;
+  padding: 5px 12px;
+  font-size: 1.3rem;
+  border-radius: 8px;
+  cursor: pointer;
+}

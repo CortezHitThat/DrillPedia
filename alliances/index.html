@@ -23,7 +23,7 @@
           const card = document.createElement("div");
           card.className = "news-card";
           card.innerHTML = `
-            <img src="${item.image}" alt="${item.title}" class="thumbnail"/>
+            <img src="${item.image[0]}" alt="${item.title}" class="thumbnail"/>
             <div class="news-content">
               <h3>${item.title}</h3>
               <small>${item.date}</small>
