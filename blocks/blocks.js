@@ -8,10 +8,10 @@ const blocks = [
       "images/raq2.jpg",
       "images/raq3.jpg"
       ],
-    snippet: "9Raq...",
+    snippet: "9Raq alias DrizzyBDrive...",
     full: [
-      `9raq alias DrizzyBDrive alias NuskiGang berlokasi di 169th Street, Morris
-      Ave, College Ave & 167th Street.`,
+      `9raq alias DrizzyBDrive alias NuskiGang berlokasi di E 169th Street,
+      Morris Ave, College Ave & E 167th Street.`,
       
 `Mereka terdiri dari berbagai set, yaitu:
 Primetime Brims (♨️⏰🎩)
