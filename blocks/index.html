@@ -6,16 +6,16 @@
   <title>NYC Drill Blocks</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
-  <script src="blocks.js" defer></script>
+  <script src="blocks.js" defer></script> <!-- Pastikan blocks.js ada -->
   <script defer>
     document.addEventListener("DOMContentLoaded", () => {
-      const listContainer = document.getElementById("blocks-list");
+      const listContainer = document.getElementById("blocks-list"); // ID sesuai dengan di HTML
       const input = document.getElementById("search-input");
 
       function render(data) {
         listContainer.innerHTML = "";
         if (data.length === 0) {
-          listContainer.innerHTML = "<p>Tidak ada blok ditemukan.</p>";
+          listContainer.innerHTML = "<p>Tidak ada block ditemukan.</p>";
           return;
         }
 
@@ -23,7 +23,7 @@
           const card = document.createElement("div");
           card.className = "news-card";
           card.innerHTML = `
-            <img src="${item.image}" alt="${item.title}" class="thumbnail"/>
+            <img src="${item.image[0]}" alt="${item.title}" class="thumbnail"/>
             <div class="news-content">
               <h3>${item.title}</h3>
               <small>${item.date}</small>
@@ -35,8 +35,10 @@
         });
       }
 
+      // Pastikan blocks sudah didefinisikan dengan benar di blocks.js
       render(blocks);
 
+      // Pencarian
       input.addEventListener("input", () => {
         const keyword = input.value.toLowerCase();
         const filtered = blocks.filter(item =>
@@ -56,7 +58,7 @@
       <input type="text" id="search-input" placeholder="Cari block berdasarkan nama...">
     </div>
 
-    <div id="blocks-list" class="news-list"></div>
+    <div id="blocks-list" class="news-list"></div> <!-- Sesuaikan dengan ID yang benar -->
   </main>
   <footer>
     <p>&copy; 2025 T5BS Wiki</p>
