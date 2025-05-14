@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #1a0033;
+      margin: 0;
+    }
+    .login-container {
+      background-color: #2e004f;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      width: 320px;
+      color: #fff;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #d09eff;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 6px;
+      background-color: #3d0066;
+      color: #fff;
+    }
+    input[type="text"]::placeholder {
+      color: #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #7e00cc;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #9900ff;
+    }
+    .message {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    .message.error {
+      color: #ff6b6b;
+    }
+    .message.success {
+      color: #9afff3;
+    }
+    .info-text {
+      text-align: center;
+      font-size: 13px;
+      margin-bottom: 10px;
+      color: #d6c3ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <div class="message" id="message"></div>
+
+    <input type="text" id="username" placeholder="Masukkan Nama Anda" required />
+
+    <div class="info-text">Belum punya token? Klik Generate dulu!</div>
+    <button id="generate-token-btn" onclick="generateToken()">Generate Token</button>
+
+    <form onsubmit="submitToken(event)">
+      <input type="text" id="token" placeholder="Masukkan Token" required />
+      <button type="submit">Masuk</button>
+    </form>
+  </div>
+
+  <script>
+    function submitToken(event) {
+      event.preventDefault();
+      const tokenInput = document.getElementById("token").value;
+      const storedToken = sessionStorage.getItem("generatedToken");
+
+      if (tokenInput === storedToken) {
+        sessionStorage.setItem("loggedIn", "true");
+        sessionStorage.setItem("username", sessionStorage.getItem("username"));
+        window.location.href = "index.html";
+      } else {
+        document.getElementById("message").innerHTML = "Token salah! Silakan coba lagi.";
+        document.getElementById("message").className = "message error";
+      }
+    }
+
+    function generateToken() {
+      const name = document.getElementById("username").value.trim();
+      if (!name) {
+        document.getElementById("message").innerHTML = "Nama tidak boleh kosong.";
+        document.getElementById("message").className = "message error";
+        return;
+      }
+
+      const token = Math.random().toString(36).substr(2, 8) + Math.random().toString(36).substr(2, 8);
+      sessionStorage.setItem("generatedToken", token);
+      sessionStorage.setItem("username", name);
+      sendTokenToTelegram(name, token);
+
+      document.getElementById("message").innerHTML = "Token berhasil digenerate. Chat Cortez untuk meminta kodenya.";
+      document.getElementById("message").className = "message success";
+      document.getElementById("generate-token-btn").style.display = "none";
+    }
+
+    function sendTokenToTelegram(name, token) {
+      const telegramBotToken = '7859365016:AAH-xZeFBQF7Qsgm-b3REdhBThx23tmItjc';
+      const chatId = '7562696558';
+      const message = `Token Untuk: ${name}\nToken: ${token}`;
+      const telegramApiUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
+      const requestUrl = `${telegramApiUrl}?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+      fetch(requestUrl)
+        .then(response => {
+          if (response.ok) {
+            console.log("Token dikirim ke Telegram.");
+          } else {
+            console.error("Gagal kirim token ke Telegram.");
+          }
+        })
+        .catch(error => {
+          console.error("Error:", error);
+        });
+    }
+  </script>
+</body>
+</html>
