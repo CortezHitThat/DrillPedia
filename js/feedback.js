@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const token = "7859365016:AAH-xZeFBQF7Qsgm-b3REdhBThx23tmItjc"; // Ganti dengan token bot Telegram kamu
-    const chatId = "7562696558"; // Ganti dengan ID chat kamu
+    const token = "7859365016:AAH-xZeFBQF7Qsgm-b3REdhBThx23tmItjc"; // token bot
+    const chatId = "7562696558"; // ID chat
 
     const text = `📝 *Feedback Masuk*\n\n*Kategori:* ${kategori}\n*Pesan:*\n${pesan}`;
 
